@@ -1,0 +1,5 @@
+coverage[toml]
+pytest
+Sphinx
+sphinxcontrib-spelling
+sphinx-copybutton
