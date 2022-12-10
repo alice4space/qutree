@@ -3,9 +3,9 @@ requires = ["setuptools>=61.2", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "python lib"
+name = "python_lib"
 version = "0.0.0"
-licence-file = "LICENSE"
+#licence-file = "LICENSE"
 description = "the skeleton of a python lib with everything I like"
 keywords = ["QTI", "Python"]
 classifiers = [
@@ -37,17 +37,15 @@ Homepage = "https://github.com/12rambau/AliceLib"
 Download = "https://github.com/12rambau/AliceLib/archive/${metadata:version}.tar.gz"
 
 [project.optional-dependencies]
-dev = [ "pre-commit", "commitizen",]
-test = [ "pytest", "pytest-sugar", "pytest-icdiff", "pytest-cov", "Flake8-pyproject"]
-doc = [ "Sphinx", "pydata-sphinx-theme"]
+dev = [ "pre-commit", "commitizen"]
+test = [ "pytest", "pytest-sugar", "pytest-icdiff", "pytest-cov", "Flake8-pyproject","nox"]
+doc = [ "Sphinx", "pydata-sphinx-theme", "numpydoc", "nox"]
 
 [tool.setuptools]
 include-package-data = true
 
-[tool.setuptools.packages.find]
-where = [ "src"]
-cmdclass = "\ndevelop = build.DevelopCmd"
-namespaces = false
+#[tool.setuptools.packages.find]
+#where = "src"
 
 [commitizen]
 changelog_file = "CHANGELOG.md"
@@ -68,6 +66,7 @@ ignore = [
     "W605", # line break before binary operator | Black take care of it
     "W503", # invalid escape sequence | we escape specific characters for sphinx
 ]
+exclude = ["*/__init__.py"]
 
 [tool.isort]
 profile = "black"

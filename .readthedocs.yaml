@@ -7,6 +7,9 @@ build:
   os: ubuntu-20.04
   tools:
     python: "3.9"
+  jobs:
+    pre_build:
+      - sphinx-apidoc --force --module-first --templatedir=docs/source/_templates/apidoc -o docs/source/_api ./src
 
 # -- conf location -------------------------------------------------------------
 sphinx:

@@ -9,3 +9,5 @@ Welcome to the lib
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+
+   API <_api/modules>
