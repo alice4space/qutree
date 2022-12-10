@@ -7,15 +7,10 @@ def lint(session):
     session.run("pre-commit", "run", "--a", *session.posargs)
 
 
-# @nox.session(python=["3.6", "3.7", "3.8", "3.9", "3.10"])
-# def test(session):
-#
-#    _install_this_editable(session, extras=["test"])
-#
-#    default_args = ["--cov-report", "term", "--cov", "sphinx_autobuild"]
-#    args = session.posargs or default_args
-#
-#    session.run("pytest", *args)
+@nox.session(python=["3.6", "3.7", "3.8", "3.9", "3.10"])
+def test(session):
+    session.install(".[test]")
+    session.run("pytest", "--color=yes", "tests")
 
 
 @nox.session(reuse_venv=True)
