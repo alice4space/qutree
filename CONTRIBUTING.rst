@@ -19,12 +19,6 @@ Develop within the project
 
 Since 2020-08-14, this repository follows these `development guidelines <https://nvie.com/posts/a-successful-git-branching-model/>`__.
 
-.. tip::
-
-    Please consider using the :code:`--no-ff` option when merging to keep the repository consistent with PR. 
-
-In the project to adapt to :code:`JupyterLab` IntelSense, we decided to explicitly write the `return` statement for every function.
-
 We need to provide the users with version informations. When a new function or class is created please use the `Deprecated <https://pypi.org/project/Deprecated/>`__ lib to specify that the feature is new in the documentation. 
 
 .. code-block:: python
@@ -54,16 +48,16 @@ How to commit
 In this repository we use the Conventional Commits specification.
 The Conventional Commits specification is a lightweight convention on top of commit messages. It provides an easy set of rules for creating an explicit commit history; which makes it easier to write automated tools on top of. This convention dovetails with SemVer, by describing the features, fixes, and breaking changes made in commit messages.
 
-You can learn more about Conventional Commits following this `link <https://www.conventionalcommits.org/en/v1.0.0/>`__
+You can learn more about Conventional Commits following this `link <https://www.conventionalcommits.org/en/v1.0.0/>`__.
 
 What can I push and where
 -------------------------
 
 Our branching system embed some rules to avoid crash of the production environment. If you want to contribute to this framework, here are some basic rules that we try our best to follow :
 
--   the modification you offer is solving a critical bug in prod : **PR in a patch branch**
--   the modification you propose solve the following issues : test, documentation, typo, quality, refactoring, translation **PR in main**
--   the modification you propose is a new feature : open an issue to discuss with the maintainers and then **PR from a named branch**
+- PR should answer issues. describe your problem or feature request in a GitHub issue and discuss with our team before starting coding.
+- start a new branch from the :code:`develop` branch
+- when ready open a PR on our repository on the same :code:`develop` branch
 
 the maintainers will try their best to use PR for new features, to help the community follow the development, for other modification they will simply push to the appropriate branch
 
@@ -84,10 +78,10 @@ In the files change the version number by runnning commitizen `bump`:
 
     cz bump
 
-It should modify for you the version number in :code:`sepal_ui/__init__.py`, :code:`setup.py`, and :code:`.cz.yaml` according to sementic versionning thanks to the conventional commit that we use in the lib. 
+It should modify for you the version number in :code:`src/__init__.py` and :code:`setup.cfg` according to sementic versionning thanks to the conventional commit that we use in the lib. 
 
 It will also update the :code:`CHANGELOG.md` file with the latest commits, sorted by categories.
 
-Then you can now create a new tag with your new version number. use the same convention as the one found in :code:`.cz.yaml`: :code:`v$minor.$major.$patch$prerelease`. 
+Then you can now create a new tag with your new version number. use the same convention as the one found in :code:`setup.cfg`: :code:`v$minor.$major.$patch$prerelease`. 
     
 The CI should take everything in control from here and execute the :code:`Upload Python Package` GitHub Action that is publishing the new version on `PyPi <#>`_.
