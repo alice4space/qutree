@@ -31,7 +31,7 @@ jobs:
       - name: Install dependencies
         run: pip install .[test]
       - name: test with pytest
-        run: pytest --color=yes --cov --cov-report=xml --instafail tests
+        run: pytest --color=yes --cov --cov-report=xml tests
       - name: coverage
         run: coverage report -m
       - name: codecov
