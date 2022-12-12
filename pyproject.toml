@@ -1,17 +1,74 @@
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools>=61.2", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "python_lib"
+version = "0.0.0"
+#licence-file = "LICENSE"
+description = "the skeleton of a python lib with everything I like"
+keywords = ["QTI", "Python"]
+classifiers = [
+    "Development Status :: 1 - Planning", 
+    "Intended Audience :: Developers",
+    "Topic :: QTI", 
+    "License :: OSI Approved :: MIT", 
+    "Programming Language :: Python :: 3.6", 
+    "Programming Language :: Python :: 3.7", 
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+]
+requires-python = ">=3.6.9"
+dependencies = ["Deprecated"]
+
+[[project.authors]]
+name = "Alice Barthe"
+email = "alice.barthe@cern.ch"
+
+[project.license]
+text = "MIT"
+
+[project.readme]
+file = "README.rst"
+content-type = "text/x-rst"
+
+[project.urls]
+Homepage = "https://github.com/12rambau/AliceLib"
+Download = "https://github.com/12rambau/AliceLib/archive/${metadata:version}.tar.gz"
+
+[project.optional-dependencies]
+dev = [ "pre-commit", "commitizen"]
+test = [ "pytest", "pytest-sugar", "pytest-icdiff", "pytest-cov", "Flake8-pyproject","nox"]
+doc = [ "Sphinx", "pydata-sphinx-theme", "numpydoc", "nox"]
+
+[tool.setuptools]
+include-package-data = true
+
+#[tool.setuptools.packages.find]
+#where = "src"
 
 [commitizen]
 changelog_file = "CHANGELOG.md"
-tag_format = "v$major.$minor.$patch$prerelease"
+tag_format = "$major.$minor.$patch$prerelease"
 update_changelog_on_bump = true
 version = "0.0.0"
-version_files = ["setup.cfg:version", "src/__init__.py:__version__"]
+version_files = ["pyproject.toml:version", "src/__init__.py:__version__"]
 
 [tool.pytest.ini_options]
 testpaths = "tests"
 
 [tool.coverage.run]
-source = ["src"]
-omit = []
+source = ["alicelib"]
+
+[tool.flake8]
+ignore = [
+    "E501", # line too long | Black take care of it
+    "W605", # line break before binary operator | Black take care of it
+    "W503", # invalid escape sequence | we escape specific characters for sphinx
+]
+exclude = ["*/__init__.py"]
+
+[tool.isort]
+profile = "black"
+skip_glob = ["**/.ipynb_checkpoints/*", "**__pycache__/*"]
+src_paths = "src"

@@ -5,12 +5,22 @@ on:
   - workflow_dispatch
 
 jobs:
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.8"
+      - uses: pre-commit/action@v3.0.0
+
   build:
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
-        python-version: [3.6, 3.7, 3.8, 3.9]
+        python-version: ["3.7", "3.8", "3.9", "3.10"]
 
     steps:
       - uses: actions/checkout@v2
@@ -20,15 +30,12 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: pip install .[test]
-      - name: Test formatting
-        uses: psf/black@stable
-      - name: PEP8 rules
-        uses: tonybajan/flake8-check-action@v1.0.0
-        with:
-            repotoken: ${{ secrets.GITHUB_TOKEN }}
       - name: test with pytest
-        run: coverage run -m pytest --color=yes tests
+        run: pytest --color=yes --cov --cov-report=xml tests
       - name: coverage
         run: coverage report -m
-      - name: codecov
-        run: bash <(curl -s https://codecov.io/bash)
+      #- name: codecov
+      #  uses: codecov/codecov-action@v3
+      #  with:
+      #    token: ${{ secrets.CODECOV_TOKEN }}
+      #    verbose: true
