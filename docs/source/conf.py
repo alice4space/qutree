@@ -41,6 +41,7 @@ exclude_patterns = ["**.ipynb_checkpoints"]  # when working in a Jupyter env.
 # -- Options for HTML output ---------------------------------------------------
 html_theme = "pydata_sphinx_theme"
 html_static_path = ["_static"]
+html_css_files = ["custom.css"]
 
 # -- Options for autosummary/autodoc output ------------------------------------
 autosummary_generate = True
