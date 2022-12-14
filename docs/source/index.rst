@@ -1,10 +1,8 @@
-.. template documentation master file, created by
-   sphinx-quickstart on Tue Jan 18 09:31:08 2022.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
 
-Welcome to the lib
-==================
+qutree
+======
+
+Plot sets of multiqubit quantum pure states as a binary tree of Bloch spheres.
 
 .. toctree::
    :maxdepth: 2

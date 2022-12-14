@@ -18,7 +18,7 @@ classifiers = [
     "Programming Language :: Python :: 3.9",
 ]
 requires-python = ">=3.6.9"
-dependencies = ["Deprecated", "numpy", "matplotlib","qutip"]
+dependencies = ["Deprecated", "numpy", "matplotlib", "qutip"]
 
 [[project.authors]]
 name = "Alice Barthe"
@@ -32,13 +32,13 @@ file = "README.rst"
 content-type = "text/x-rst"
 
 [project.urls]
-Homepage = "https://github.com/alice4space/AliceLib"
-Download = "https://github.com/alice4space/AliceLib/archive/${metadata:version}.tar.gz"
+Homepage = "https://github.com/alice4space/bbt"
+Download = "https://github.com/alice4space/bbt/archive/${metadata:version}.tar.gz"
 
 [project.optional-dependencies]
-dev = [ "pre-commit", "commitizen"]
-test = [ "pytest", "pytest-sugar", "pytest-icdiff", "pytest-cov", "Flake8-pyproject","nox"]
-doc = [ "Sphinx", "pydata-sphinx-theme", "numpydoc", "nox"]
+dev = ["pre-commit", "commitizen"]
+test = ["pytest", "pytest-sugar", "pytest-icdiff", "pytest-cov", "Flake8-pyproject","nox"]
+doc = ["Sphinx", "pydata-sphinx-theme", "nox"]
 
 [tool.setuptools]
 include-package-data = true

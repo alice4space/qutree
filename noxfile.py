@@ -20,24 +20,22 @@ def docs(session):
         "sphinx-apidoc",
         "--force",
         "--module-first",
-        "--templatedir=docs/source/_templates/apidoc",
         "-o",
         "docs/source/_api",
-        "./src",
+        "./bbt",
     )
     session.run("sphinx-build", "-b", "html", "docs/source", "build")
 
 
-@nox.session(name="docs-live", reuse_venv=True)
+@nox.session(name="docs-live", reuse_venv=False)
 def docs_live(session):
     session.install(".[doc]")
     session.run(
         "sphinx-apidoc",
         "--force",
         "--module-first",
-        "--templatedir=docs/source/_templates/apidoc",
         "-o",
         "docs/source/_api",
-        "./src",
+        "./bbt",
     )
     session.run("sphinx-autobuild", "-b", "html", "docs/source", "build")

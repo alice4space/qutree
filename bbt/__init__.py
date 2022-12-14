@@ -10,8 +10,6 @@ import numpy as np
 import qutip
 from matplotlib import cm
 
-__all__ = ["BBT"]
-
 
 def nphi_psi(psi: np.array) -> Tuple[np.array, np.array]:
     """

@@ -15,10 +15,10 @@ from datetime import datetime
 sys.path.insert(0, os.path.abspath("."))
 sys.path.insert(0, os.path.abspath("../.."))
 
-from alicelib import __author__, __version__  # noqa
+from bbt import __author__, __version__  # noqa
 
 # -- Project information -------------------------------------------------------
-project = "template"
+project = "qutree"
 copyright = f"2022-{datetime.now().year}, {__author__}"
 author = __author__
 release = __version__
@@ -26,7 +26,7 @@ release = __version__
 # -- General configuration -----------------------------------------------------
 extensions = [
     "sphinx.ext.autosummary",
-    "numpydoc",
+    "sphinx.ext.napoleon",
 ]
 templates_path = ["_templates"]
 exclude_patterns = ["**.ipynb_checkpoints"]  # when working in a Jupyter env.
