@@ -7,7 +7,7 @@ def lint(session):
     session.run("pre-commit", "run", "--a", *session.posargs)
 
 
-@nox.session(python=["3.6", "3.7", "3.8", "3.9", "3.10"])
+@nox.session(python=["3.7", "3.8", "3.9"])
 def test(session):
     session.install(".[test]")
     session.run("pytest", "--color=yes", "tests")
