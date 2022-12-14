@@ -22,7 +22,7 @@ def docs(session):
         "--module-first",
         "-o",
         "docs/source/_api",
-        "./bbt",
+        "./qutree",
     )
     session.run("sphinx-build", "-b", "html", "docs/source", "build")
 
@@ -36,6 +36,6 @@ def docs_live(session):
         "--module-first",
         "-o",
         "docs/source/_api",
-        "./bbt",
+        "./qutree",
     )
     session.run("sphinx-autobuild", "-b", "html", "docs/source", "build")
