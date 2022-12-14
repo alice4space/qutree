@@ -9,3 +9,4 @@ Plot sets of multiqubit quantum pure states as a binary tree of Bloch spheres.
    :caption: Contents:
 
    API <_api/modules>
+   Examples <examples/demo.ipynb>

@@ -14,6 +14,7 @@ from datetime import datetime
 
 sys.path.insert(0, os.path.abspath("."))
 sys.path.insert(0, os.path.abspath("../.."))
+sys.path.insert(0, os.path.abspath("../../examples"))
 
 from qutree import __author__, __version__  # noqa
 
@@ -28,6 +29,9 @@ extensions = [
     "sphinx.ext.autosummary",
     "sphinx.ext.napoleon",
     "sphinx.ext.viewcode",
+    "nbsphinx",
+    # https://github.com/spatialaudio/nbsphinx/issues/687
+    "IPython.sphinxext.ipython_console_highlighting",
 ]
 templates_path = ["_templates"]
 exclude_patterns = ["**.ipynb_checkpoints"]  # when working in a Jupyter env.
