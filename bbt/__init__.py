@@ -248,7 +248,7 @@ class BBT:
                 ), "the colors matrix must be a 2D tensor of 4 (RGBA) by the number of samples"
                 self.samples_colors = colors
             elif (
-                len(colors.shape) == 2
+                len(colors.shape) == 1
             ):  # case in which the color is a a 1D tensor, create colors matrix with cmap
                 assert (
                     colors.shape[0] == self.num_samples
