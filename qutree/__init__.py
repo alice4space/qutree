@@ -72,7 +72,7 @@ def thephi_to_xyz(the: np.array, phi: np.array) -> Tuple[np.array, np.array, np.
     spherical to carthesian
 
     Args:
-        the (np.array): array of the angles [0,pi]
+        the (np.array): array of the angles :math:`[0,\pi]`
         phi (np.array): array of :math:`\phi` angles :math:`[0,2 \pi]`
 
     Returns:
