@@ -27,6 +27,7 @@ release = __version__
 extensions = [
     "sphinx.ext.autosummary",
     "sphinx.ext.napoleon",
+    "sphinx.ext.viewcode",
 ]
 templates_path = ["_templates"]
 exclude_patterns = ["**.ipynb_checkpoints"]  # when working in a Jupyter env.
@@ -41,3 +42,26 @@ autosummary_generate = True
 autoclass_content = "class"
 
 # -- Options of the HTML theme -------------------------------------------------
+html_theme_options = {
+    "use_edit_page_button": True,
+    "show_prev_next": True,
+    "icon_links": [
+        {
+            "name": "GitHub",
+            "url": "https://github.com/alice4space/qutree",
+            "icon": "fa-brands fa-github",
+        },
+        {
+            "name": "Pypi",
+            "url": "https://pypi.org",
+            "icon": "fa-brands fa-python",
+        },
+    ],
+}
+html_context = {
+    "github_user": "alice4space",
+    "github_repo": "qutree",
+    "github_version": "main",
+    "doc_path": "docs/source",
+}
+
