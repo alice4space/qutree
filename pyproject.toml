@@ -3,7 +3,7 @@ requires = ["setuptools>=61.2", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "python_lib"
+name = "bbt"
 version = "0.0.0"
 #licence-file = "LICENSE"
 description = "the skeleton of a python lib with everything I like"
@@ -32,8 +32,8 @@ file = "README.rst"
 content-type = "text/x-rst"
 
 [project.urls]
-Homepage = "https://github.com/12rambau/AliceLib"
-Download = "https://github.com/12rambau/AliceLib/archive/${metadata:version}.tar.gz"
+Homepage = "https://github.com/alice4space/AliceLib"
+Download = "https://github.com/alice4space/AliceLib/archive/${metadata:version}.tar.gz"
 
 [project.optional-dependencies]
 dev = [ "pre-commit", "commitizen"]
@@ -44,7 +44,7 @@ doc = [ "Sphinx", "pydata-sphinx-theme", "numpydoc", "nox"]
 include-package-data = true
 
 #[tool.setuptools.packages.find]
-#where = "src"
+#where = "bbt"
 
 [commitizen]
 changelog_file = "CHANGELOG.md"
@@ -57,7 +57,7 @@ version_files = ["pyproject.toml:version", "src/__init__.py:__version__"]
 testpaths = "tests"
 
 [tool.coverage.run]
-source = ["alicelib"]
+source = ["bbt"]
 
 [tool.flake8]
 ignore = [
@@ -66,7 +66,6 @@ ignore = [
     "W503", # invalid escape sequence | we escape specific characters for sphinx
     "E203", # white space before : | Black is in charge
 ]
-exclude = ["*/__init__.py"]
 
 [tool.isort]
 profile = "black"

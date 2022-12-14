@@ -1,5 +1,10 @@
+__version__ = "0.0.0"  # noqa
+__author__ = "Alice Barthe"  # noqa
+__email__ = "alice.barthe@cern.ch"  # noqa
+
 from typing import Tuple, Union
 
+import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
 import qutip
@@ -8,7 +13,7 @@ from matplotlib import cm
 __all__ = ["BBT"]
 
 
-def nphi_psi(psi: np.array) -> Tuple(np.array, np.array):
+def nphi_psi(psi: np.array) -> Tuple[np.array, np.array]:
     """
     decompose an array of complex into absolute value and angles
 
@@ -26,7 +31,7 @@ def nphi_psi(psi: np.array) -> Tuple(np.array, np.array):
     return r, phi
 
 
-def nthe_n0n1(n0: np.array, n1: np.array) -> Tuple(np.array, np.array):
+def nthe_n0n1(n0: np.array, n1: np.array) -> Tuple[np.array, np.array]:
     """
     Carthesian to Polar
 
@@ -64,7 +69,7 @@ def phimp_phi01(phi0, phi1):
     return phil, phig
 
 
-def thephi_to_xyz(the: np.array, phi: np.array) -> Tuple(np.array, np.array, np.array):
+def thephi_to_xyz(the: np.array, phi: np.array) -> Tuple[np.array, np.array, np.array]:
     """
     spherical to carthesian
 
@@ -91,7 +96,7 @@ def fun_recursive(
     tree_vals: list = [],
     tree_idxs: list = [],
     tol: float = 1e-4,
-) -> Tuple(np.array, np.array, list, list):
+) -> Tuple[np.array, np.array, list, list]:
     """
     recursive function going down the hilbert schmidt decomposition
 
@@ -161,7 +166,7 @@ def bloch_points(
     yp: np.array,
     zp: np.array,
     colors,
-    ax: Union(plt.Axis, None) = None,
+    ax: Union[mpl.axes.Axes, None] = None,
     azim: float = -40.0,
     elev: float = 30.0,
 ) -> None:
@@ -173,7 +178,7 @@ def bloch_points(
         yp (np.array) : array of the y axis coordinate
         zp (np.array) : array of the z axis coordinate
         colors (np.array) : array of colors for each point
-        ax : ax where the Bloch Sphere will be plotted, if None one is created
+        ax (matplotlib.axes.Axes) : ax where the Bloch Sphere will be plotted, if None one is created
         azim (float) : azimuth to plot the sphere
         elev (float) : azimuth to plot the sphere
     """
@@ -202,7 +207,7 @@ class BBT:
         self.num_qubits = num_qubits
 
     def add_data(
-        self, states: np.array, colors: Union(np.array, None) = None, cmap: str = "jet"
+        self, states: np.array, colors: Union[np.array, None] = None, cmap: str = "jet"
     ) -> None:
         """
         Add data of states to the tree computing the Bloch spheres parameters
@@ -256,7 +261,7 @@ class BBT:
 
     def plot_tree(
         self, azim: float = -40.0, elev: float = 30.0, size_sphere: float = 2.0
-    ) -> plt.figure.Figure:
+    ) -> None:
         """
         Display the binary tree
 
@@ -264,7 +269,6 @@ class BBT:
             azim (float) : viewing angle : azimuth (default:-40)
             elev (float) : viewing angle : elevation (default:30)
             size_sphere (float) : size of each single sphere.
-
         """
 
         dw = 1 / (2 ** (self.num_qubits - 1))
@@ -290,5 +294,3 @@ class BBT:
             phi = self.tree_vals[i][1, :]
             x, y, z = thephi_to_xyz(the, phi)
             bloch_points(x, y, z, colors=self.samples_colors, ax=ax)
-
-        return fig
