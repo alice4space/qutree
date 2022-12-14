@@ -1,5 +1,5 @@
 import numpy as np
-from bbt import nphi_psi
+from qutree import *
 
 
 def test_nphi_psi():

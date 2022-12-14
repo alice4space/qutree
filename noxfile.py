@@ -20,10 +20,9 @@ def docs(session):
         "sphinx-apidoc",
         "--force",
         "--module-first",
-        "--templatedir=docs/source/_templates/apidoc",
         "-o",
         "docs/source/_api",
-        "./src",
+        "./qutree",
     )
     session.run("sphinx-build", "-b", "html", "docs/source", "build")
 
@@ -35,9 +34,8 @@ def docs_live(session):
         "sphinx-apidoc",
         "--force",
         "--module-first",
-        "--templatedir=docs/source/_templates/apidoc",
         "-o",
         "docs/source/_api",
-        "./src",
+        "./qutree",
     )
     session.run("sphinx-autobuild", "-b", "html", "docs/source", "build")
