@@ -58,6 +58,7 @@ doc = [
     "pydata-sphinx-theme", 
     "nox", 
     "nbsphinx", 
+    "sphinx-copybutton",
     # to run the examples
     "ipython",
     "pennylane",

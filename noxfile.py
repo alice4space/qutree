@@ -27,7 +27,7 @@ def docs(session):
     session.run("sphinx-build", "-b", "html", "docs/source", "build")
 
 
-@nox.session(name="docs-live", reuse_venv=False)
+@nox.session(name="docs-live", reuse_venv=True)
 def docs_live(session):
     session.install(".[doc]")
     session.run(

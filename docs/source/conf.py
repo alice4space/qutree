@@ -30,6 +30,7 @@ extensions = [
     "sphinx.ext.napoleon",
     "sphinx.ext.viewcode",
     "nbsphinx",
+    "sphinx_copybutton",
     # https://github.com/spatialaudio/nbsphinx/issues/687
     "IPython.sphinxext.ipython_console_highlighting",
 ]
