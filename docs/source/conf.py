@@ -70,4 +70,3 @@ html_context = {
     "github_version": "main",
     "doc_path": "docs/source",
 }
-

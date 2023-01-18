@@ -20,7 +20,7 @@ def nphi_psi(psi: np.array) -> Tuple[np.array, np.array]:
 
     Returns:
         r (np.array) : array of absolute values
-        phi (np.array) : array of angles from [0,2 pi]
+        phi (np.array) : array of angles from :math:`[0, 2\pi]`
     """
 
     r = np.abs(psi)
@@ -33,7 +33,7 @@ def nthe_n0n1(n0: np.array, n1: np.array) -> Tuple[np.array, np.array]:
     """
     Carthesian to Polar
 
-    Compute n and theta such that [n0,n1] = n*[cos(theta),sin(theta)]
+    Compute :math:`n` and :math:`\theta` such that :math:`[n0,n1] = n[cos(\\theta),sin(\\theta)]`
 
     Args:
         n0 (np.array): array of absolute values
@@ -41,7 +41,7 @@ def nthe_n0n1(n0: np.array, n1: np.array) -> Tuple[np.array, np.array]:
 
     Returns:
         n (np.array) : array of norm
-        the (np.array) : array of angles from [0,pi]
+        the (np.array) : array of angles from :math:`[0, \pi]`
     """
 
     n = np.sqrt(n0**2 + n1**2)
@@ -72,8 +72,8 @@ def thephi_to_xyz(the: np.array, phi: np.array) -> Tuple[np.array, np.array, np.
     spherical to carthesian
 
     Args:
-        the (np.array): array of the angles [0,pi]
-        phi (np.array): array of phi angles [0,2 pi]
+        the (np.array): array of the angles :math:`[0,\pi]`
+        phi (np.array): array of :math:`\phi` angles :math:`[0,2 \pi]`
 
     Returns:
         x (np.array): array of the x axis coordinate
@@ -99,16 +99,16 @@ def fun_recursive(
     recursive function going down the hilbert schmidt decomposition
 
     Args:
-        psi (np.array): array representing the state in the current subspace (2**N,M)
+        psi (np.array): array representing the state in the current subspace :math:`(2^N,M)`
         coord (str): string representing the current coordinate in the binary tree
-        tree_vals (list) : register storing the thetas and phis of the Bloch sphere at each coordinate
+        tree_vals (list) : register storing the :math:`\\theta` and :math:`\phi` of the Bloch sphere at each coordinate
         tree_idxs (list) : register storing the coordinates
         tol : tolerance to delete a subspace
 
     Returns:
         phip (np.array) : the global phases of the local subspace
         n (np.array) : the amplitude of the local subspace
-        tree_vals (list) : register storing the thetas and phis of the Bloch sphere at each coordinate
+        tree_vals (list) : register storing the :math:`\\theta` and :math:`\phi` of the Bloch sphere at each coordinate
         tree_idxs (list) : register storing the coordinates
     """
 
