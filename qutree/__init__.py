@@ -258,7 +258,11 @@ class BBT:
             self.samples_colors = cm_custom(np.linspace(0, 1, self.num_samples))
 
     def plot_tree(
-        self, azim: float = -40.0, elev: float = 30.0, size_sphere: float = 2.0
+        self,
+        azim: float = -40.0,
+        elev: float = 30.0,
+        size_sphere: float = 2.0,
+        dst_file: str = "",
     ) -> None:
         """
         Display the binary tree
@@ -267,6 +271,7 @@ class BBT:
             azim (float) : viewing angle : azimuth (default:-40)
             elev (float) : viewing angle : elevation (default:30)
             size_sphere (float) : size of each single sphere.
+            dst_file (str) : name of the destination file, leave blank for no file
         """
 
         dw = 1 / (2 ** (self.num_qubits - 1))
@@ -292,3 +297,8 @@ class BBT:
             phi = self.tree_vals[i][1, :]
             x, y, z = thephi_to_xyz(the, phi)
             bloch_points(x, y, z, colors=self.samples_colors, ax=ax)
+
+            if dst_file != "":
+                fig.savefig(dst_file, transparent=True)
+                # fig.savefig(dst_file)
+                print(f"file successfully saved to {dst_file}")
