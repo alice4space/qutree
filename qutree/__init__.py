@@ -4,7 +4,8 @@ __version__ = "0.0.0"
 __author__ = "Alice Barthe"
 __email__ = "alice.barthe@cern.ch"
 
-from typing import Optional, Tuple
+from pathlib import Path
+from typing import Optional, Tuple, Union
 
 import matplotlib as mpl
 import matplotlib.pyplot as plt
@@ -253,7 +254,7 @@ class BBT:
         azim: float = -40.0,
         elev: float = 30.0,
         size_sphere: float = 2.0,
-        dst_file: str = "",
+        dst_file: Union[Path, str] = "",
     ) -> None:
         """Display the binary tree.
 
@@ -261,7 +262,7 @@ class BBT:
             azim: viewing angle -> azimuth (default:-40)
             elev: viewing angle -> elevation (default:30)
             size_sphere: size of each single sphere.
-            dst_file: name of the destination file, leave blank for no file
+            dst_file: name of the destination file, leave blank to not save the plot.
         """
         dw = 1 / (2 ** (self.num_qubits - 1))
         dh = 1 / self.num_qubits
@@ -289,5 +290,4 @@ class BBT:
 
             if dst_file != "":
                 fig.savefig(dst_file, transparent=True)
-                # fig.savefig(dst_file)
                 print(f"file successfully saved to {dst_file}")
