@@ -67,6 +67,7 @@ doc = [
 
 [tool.setuptools]
 include-package-data = true
+packages = ["qutree"]
 
 [commitizen]
 changelog_file = "CHANGELOG.md"

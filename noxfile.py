@@ -14,7 +14,7 @@ def lint(session):
 def test(session):
     """Run the lib test and export a coverage as html."""
     session.install(".[test]")
-    session.run("pytest", "--color=yes", "tests")
+    session.run("pytest", "--color=yes", "--cov", "--cov-report=html", "tests")
 
 
 @nox.session(reuse_venv=True)
