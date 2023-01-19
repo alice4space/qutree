@@ -55,7 +55,7 @@ test = [
     "Flake8-pyproject",
 ]
 doc = [
-    "Sphinx", 
+    "Sphinx<6", 
     "pydata-sphinx-theme", 
     "nox", 
     "nbsphinx", 

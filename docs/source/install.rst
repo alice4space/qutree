@@ -22,8 +22,12 @@ The source of ``qutree`` can be installed from the `GitHub repo <https://github.
 local development
 -----------------
 
+The source of ``qutree`` can be installed from the `GitHub repo <https://github.com/alice4space/qutree>`_ in development mode.
+
 .. code-block:: console
 
    git clone https://github.com/alice4space/qutree.git
    cd qutree/
-   pip install -e .
+   pip install -e .[dev]
+
+Go to :doc:`contribute` to know more.

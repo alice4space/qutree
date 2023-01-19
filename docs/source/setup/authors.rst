@@ -1,4 +1,0 @@
-authors
-=======
-
-.. include :: ../../../AUTHORS.rst

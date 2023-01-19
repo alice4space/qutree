@@ -41,6 +41,13 @@ exclude_patterns = ["**.ipynb_checkpoints"]  # when working in a Jupyter env.
 html_theme = "pydata_sphinx_theme"
 html_static_path = ["_static"]
 html_css_files = ["custom.css"]
+html_context = {
+    "default_mode": "light",
+    "github_user": "alice4space",
+    "github_repo": "qutree",
+    "github_version": "main",
+    "doc_path": "docs/source",
+}
 
 # -- Options for autosummary/autodoc output ------------------------------------
 autosummary_generate = True
@@ -48,8 +55,10 @@ autoclass_content = "class"
 
 # -- Options of the HTML theme -------------------------------------------------
 html_theme_options = {
+    "logo": {"text": project},
     "use_edit_page_button": True,
     "show_prev_next": True,
+    "navbar_end": ["navbar-icon-links"],  # remove theme change
     "icon_links": [
         {
             "name": "GitHub",
@@ -62,10 +71,4 @@ html_theme_options = {
             "icon": "fa-brands fa-python",
         },
     ],
-}
-html_context = {
-    "github_user": "alice4space",
-    "github_repo": "qutree",
-    "github_version": "main",
-    "doc_path": "docs/source",
 }

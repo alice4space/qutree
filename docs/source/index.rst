@@ -1,12 +1,13 @@
 
-qutree
-======
+.. include :: ../../README.rst
 
 .. toctree::
    :hidden:
 
-   setup/index
-   API <_api/modules>
+   install
    Examples <examples/demo>
-
-Plot sets of multiqubit quantum pure states as a binary tree of Bloch spheres.
+   API <_api/modules>
+   contribute
+   authors
+   
+   

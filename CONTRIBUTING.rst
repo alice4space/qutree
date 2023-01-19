@@ -7,7 +7,7 @@ After forking the projet, run the following command to start developing:
 
     $ git clone https://github.com/<github id>/<python_lib>.git
     $ cd <python_lib> 
-    $ pip install -e .[dev, test, doc]
+    $ pip install -e .[dev]
     
 .. danger:: 
 

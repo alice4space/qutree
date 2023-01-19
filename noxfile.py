@@ -29,7 +29,7 @@ def docs(session):
         "docs/source/_api",
         "./qutree",
     )
-    session.run("sphinx-build", "-b", "html", "docs/source", "build")
+    session.run("sphinx-build", "-b", "html", "docs/source", "docs/build/html")
 
 
 @nox.session(name="mypy", reuse_venv=True)
