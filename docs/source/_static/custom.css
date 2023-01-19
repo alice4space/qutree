@@ -9,3 +9,12 @@
     margin-right: 0.5em;
     padding-right: 0.5em;
   }
+
+/*******************************************************************************
+ * add the dollar sign in console block
+ */
+div.highlight-console pre span.go::before {
+  content: "$";
+  margin-right: 10px;
+  margin-left: 5px;
+}
