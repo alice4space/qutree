@@ -30,3 +30,21 @@ def docs(session):
         "./qutree",
     )
     session.run("sphinx-build", "-b", "html", "docs/source", "build")
+
+
+@nox.session(name="mypy", reuse_venv=True)
+def mypy(session):
+    """Run a mypy check of the lib."""
+    session.install(".[dev]")
+    test_files = session.posargs or ["qutree"]
+    session.run(
+        "mypy",
+        "--scripts-are-modules",
+        "--ignore-missing-imports",
+        "--install-types",
+        "--non-interactive",
+        "--disable-error-code",
+        "func-returns-value",
+        "--warn-redundant-casts",
+        *test_files,
+    )

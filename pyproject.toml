@@ -44,6 +44,8 @@ Download = "https://github.com/alice4space/bbt/archive/${metadata:version}.tar.g
 dev = [
     "pre-commit", 
     "commitizen",
+    "nox",
+    "mypy",
 ]
 test = [
     "pytest", 
@@ -51,7 +53,6 @@ test = [
     "pytest-icdiff", 
     "pytest-cov", 
     "Flake8-pyproject",
-    "nox"
 ]
 doc = [
     "Sphinx", 

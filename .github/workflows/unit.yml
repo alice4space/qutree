@@ -14,6 +14,12 @@ jobs:
         with:
           python-version: "3.8"
       - uses: pre-commit/action@v3.0.0
+      - name: mypy
+        uses: jpetrucciani/mypy-check@master
+        with:
+          path: './qutree'
+          requirements: "."
+          mypy_flags: '--config-file ./pyproject.toml'
 
   build:
     runs-on: ubuntu-latest

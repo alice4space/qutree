@@ -4,7 +4,7 @@ __version__ = "0.0.0"
 __author__ = "Alice Barthe"
 __email__ = "alice.barthe@cern.ch"
 
-from typing import Tuple, Union
+from typing import Optional, Tuple
 
 import matplotlib as mpl
 import matplotlib.pyplot as plt
@@ -13,7 +13,7 @@ import qutip
 from matplotlib import cm
 
 
-def nphi_psi(psi: np.array) -> Tuple[np.array, np.array]:
+def nphi_psi(psi: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
     r"""Decompose an array of complex into absolute value and angles.
 
     Args:
@@ -29,7 +29,7 @@ def nphi_psi(psi: np.array) -> Tuple[np.array, np.array]:
     return r, phi
 
 
-def nthe_n0n1(n0: np.array, n1: np.array) -> Tuple[np.array, np.array]:
+def nthe_n0n1(n0: np.ndarray, n1: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
     r"""Carthesian to Polar.
 
     Compute :math:`n` and :math:`\theta` such that :math:`[n0,n1] = n[cos(\theta),sin(\theta)]`
@@ -64,7 +64,9 @@ def phimp_phi01(phi0, phi1):
     return phil, phig
 
 
-def thephi_to_xyz(the: np.array, phi: np.array) -> Tuple[np.array, np.array, np.array]:
+def thephi_to_xyz(
+    the: np.ndarray, phi: np.ndarray
+) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
     r"""Spherical to carthesian.
 
     Args:
@@ -84,12 +86,12 @@ def thephi_to_xyz(the: np.array, phi: np.array) -> Tuple[np.array, np.array, np.
 
 
 def fun_recursive(
-    psi: np.array,
+    psi: np.ndarray,
     coord: str = "",
     tree_vals: list = [],
     tree_idxs: list = [],
-    tol: float = 1e-4,
-) -> Tuple[np.array, np.array, list, list]:
+    tol: Optional[float] = 1e-4,
+) -> Tuple[np.ndarray, np.ndarray, list, list]:
     r"""Recursive function going down the hilbert schmidt decomposition.
 
     Args:
@@ -97,7 +99,7 @@ def fun_recursive(
         coord: string representing the current coordinate in the binary tree
         tree_vals: register storing the :math:`\theta` and :math:`\phi` of the Bloch sphere at each coordinate
         tree_idxs: register storing the coordinates
-        tol: tolerance to delete a subspace
+        tol: tolerance to delete a subspace.
 
     Returns:
         phip: the global phases of the local subspace
@@ -153,11 +155,11 @@ def fun_recursive(
 
 
 def bloch_points(
-    xp: np.array,
-    yp: np.array,
-    zp: np.array,
+    xp: np.ndarray,
+    yp: np.ndarray,
+    zp: np.ndarray,
     colors,
-    ax: Union[mpl.axes.Axes, None] = None,
+    ax: Optional[mpl.axes.Axes] = None,
     azim: float = -40.0,
     elev: float = 30.0,
 ) -> None:
@@ -196,7 +198,7 @@ class BBT:
         self.num_qubits = num_qubits
 
     def add_data(
-        self, states: np.array, colors: Union[np.array, None] = None, cmap: str = "jet"
+        self, states: np.ndarray, colors: Optional[np.ndarray] = None, cmap: str = "jet"
     ) -> None:
         """Add data of states to the tree computing the Bloch spheres parameters.
 
@@ -212,8 +214,8 @@ class BBT:
 
         self.num_samples = states.shape[1]
 
-        tree_vals = []
-        tree_idxs = []
+        tree_vals: list = []
+        tree_idxs: list = []
 
         fun_recursive(states, tree_vals=tree_vals, tree_idxs=tree_idxs, tol=None)
 
