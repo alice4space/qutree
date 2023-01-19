@@ -6,32 +6,31 @@ qutree
     :alt: License: MIT
 
 .. image:: https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow
-   :target: https://conventionalcommits.org
-   :alt: conventional commit
+    :target: https://conventionalcommits.org
+    :alt: conventional commit
 
 .. image:: https://img.shields.io/badge/code%20style-black-000000
-   :target: https://github.com/psf/black
-   :alt: Black badge
+    :target: https://github.com/psf/black
+    :alt: Black badge
 
 .. image:: https://img.shields.io/pypi/v/qutree?color=orange&logo=python&logoColor=white
-   :target: https://pypi.org/project/qutree 
-   :alt: PyPI
+    :target: https://pypi.org/project/qutree 
+    :alt: PyPI
 
 .. image:: https://img.shields.io/github/actions/workflow/status/alice4space/qutree/unit.yml?logo=github&logoColor=white
-   :target: https://github.com/alice4space/qutree/actions/workflows/unit.yml
-   :alt: build
+    :target: https://github.com/alice4space/qutree/actions/workflows/unit.yml
+    :alt: build
 
 .. image:: https://img.shields.io/codecov/c/github/alice4space/qutree?logo=codecov&logoColor=white
     :target: https://codecov.io/gh/alice4space/qutree
     :alt: Test Coverage
 
 .. image:: https://img.shields.io/codeclimate/maintainability/alice4space/qutree?logo=codeclimate&logoColor=white
-   :alt: Code Climate maintainability
+    :alt: Code Climate maintainability
 
 .. image:: https://img.shields.io/readthedocs/pyqutree/latest?logo=readthedocs&logoColor=white
     :target: https://pyqutree.readthedocs.io/en/latest/
     :alt: Documentation Status
-
 
 .. image:: https://img.shields.io/badge/all_contributors-2-purple
     :alt: All contributors
