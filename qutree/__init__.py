@@ -188,8 +188,6 @@ def bloch_points(
 
 
 class BBT:
-    """Class containing the data to plot the Bloch Binary Tree."""
-
     def __init__(self, num_qubits: int) -> None:
         """Class containing the data to plot the Bloch Binary Tree.
 

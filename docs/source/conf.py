@@ -51,7 +51,11 @@ html_context = {
 
 # -- Options for autosummary/autodoc output ------------------------------------
 autosummary_generate = True
-autoclass_content = "class"
+autoclass_content = "init"
+autodoc_typehints = "description"
+
+# -- Option for Napoleon styling of tuple output -------------------------------
+napoleon_custom_sections = [("Returns", "params_style")]
 
 # -- Options of the HTML theme -------------------------------------------------
 html_theme_options = {

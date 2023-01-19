@@ -87,7 +87,10 @@ source = ["qutree"]
 ignore-init-module-imports = true
 fix = true
 select = ["E", "F", "W", "I", "D", "RUF"]
-ignore = ["E501"]  # line too long | Black take care of it
+ignore = [
+    "E501",  # line too long | Black take care of it
+    "D101",  # Missing docstring in public class | set in the __init__ method only
+]
 
 [tool.ruff.flake8-quotes]
 docstring-quotes = "double"
