@@ -10,7 +10,7 @@ keywords = ["QTI", "Python"]
 classifiers = [
     "Development Status :: 5 - Production/Stable", 
     "Intended Audience :: Developers",
-    "Topic :: QTI", 
+    "Topic :: SCIENTIFIC/ENGINEERING :: PHYSICS", 
     "License :: OSI Approved :: MIT License", 
     "Programming Language :: Python :: 3.7", 
     "Programming Language :: Python :: 3.8",
