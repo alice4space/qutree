@@ -5,72 +5,68 @@ After forking the projet, run the following command to start developing:
 
 .. code-block:: console
 
-    $ git clone https://github.com/<github id>/<python_lib>.git
-    $ cd <python_lib> 
-    $ pip install -e .[dev, test, doc]
+    git clone https://github.com/alice4space/qutree.git
+    cd qutree
+    pip install -e .[dev]
+
+Nox 
+---
+
+:code:`nox` can be used to automatically create isolated local development environments with all of the correct packages installed to work on the lib. The rest of this guide focuses on using nox to start with a basic environment.
+
+You can call :code:`nox` from the command line in order to perform common actions that are needed in building the lib. :code:`nox` operates with isolated environments, so each action has its own packages installed in a local directory (:code:`.nox`). For common development actions, you’ll simply need to use :code:`nox` and won’t need to set up any other packages.
     
-.. danger:: 
+Pre-commit hooks 
+----------------
 
-    :code:`pre-commits` are installed in edit mode. Every commit that does not respect the conventional commits framework will be refused. 
-    you can read this `documentation <https://www.conventionalcommits.org/en/v1.0.0/>`__ to learn more about them and we highly recommend to use the :code:`commitizen` lib to create your commits: `<https://commitizen-tools.github.io/commitizen>`__.
+:code:`pre-commit` allows us to run several checks on the codebase every time a new Git commit is made. This ensures standards and basic quality control for our code.
 
-Develop within the project
---------------------------
+Install the pre-commit in the repository:
 
-Since 2020-08-14, this repository follows these `development guidelines <https://nvie.com/posts/a-successful-git-branching-model/>`__.
+.. code-block:: console
 
-We need to provide the users with version informations. When a new function or class is created please use the `Deprecated <https://pypi.org/project/Deprecated/>`__ lib to specify that the feature is new in the documentation. 
+    pre-commit install -t pre-commit -t commit-msg
 
-.. code-block:: python
+Linting operations will be run automatically for every downstream commit.
 
-    from deprecated.sphinx import deprecated
-    from deprecated.sphinx import versionadded
-    from deprecated.sphinx import versionchanged
+.. note:: 
 
+    to run liniting operation without commiting your change execute the following: 
 
-    @versionadded(version='1.0', reason="This function is new")
-    def function_one():
-        '''This is the function one'''
+    .. code-block:: console
 
+        nox -s lint
 
-    @versionchanged(version='1.0', reason="This function is modified")
-    def function_two():
-        '''This is the function two'''
+Mypy
+----
 
+Mypy is a static type checker for Python.
 
-    @deprecated(version='1.0', reason="This function will be removed soon")
-    def function_three():
-        '''This is the function three'''
-    
-How to commit
+Type checkers help ensure that you're using variables and functions in your code correctly. With mypy, add type hints (PEP 484) to your Python programs, and mypy will warn you when you use those types incorrectly.
+
+Python is a dynamic language, so usually you'll only see errors in your code when you attempt to run it. Mypy is a static checker, so it finds bugs in your programs without even running them!
+
+to run the MyPy checks run: 
+
+.. code-block:: console
+
+    nox -s mypy
+
+Documentation
 -------------
 
-In this repository we use the Conventional Commits specification.
-The Conventional Commits specification is a lightweight convention on top of commit messages. It provides an easy set of rules for creating an explicit commit history; which makes it easier to write automated tools on top of. This convention dovetails with SemVer, by describing the features, fixes, and breaking changes made in commit messages.
+We build our documentation within the :code:`Sphinx` framework. execute the associated nox to build the file and produce the associated HTML:
 
-You can learn more about Conventional Commits following this `link <https://www.conventionalcommits.org/en/v1.0.0/>`__.
+.. code-block:: console
 
-What can I push and where
--------------------------
+    nox -s docs
 
-Our branching system embed some rules to avoid crash of the production environment. If you want to contribute to this framework, here are some basic rules that we try our best to follow :
+The index file will be in :code:`./docs/build/html/index.html`.
 
-- PR should answer issues. describe your problem or feature request in a GitHub issue and discuss with our team before starting coding.
-- start a new branch from the :code:`develop` branch
-- when ready open a PR on our repository on the same :code:`develop` branch
+Release
+-------
 
-the maintainers will try their best to use PR for new features, to help the community follow the development, for other modification they will simply push to the appropriate branch
-
-Create a new release
---------------------
-
-.. danger:: 
-
-    for maintainers only 
-    
- .. warning::
- 
-     You need to use the :code:`commitizen` lib to create your release: `<https://commitizen-tools.github.io/commitizen>`__
+You need to use the :code:`commitizen` lib to create your release: `<https://commitizen-tools.github.io/commitizen>`__.
     
 In the files change the version number by runnning commitizen `bump`: 
 
@@ -78,10 +74,10 @@ In the files change the version number by runnning commitizen `bump`:
 
     cz bump
 
-It should modify for you the version number in :code:`src/__init__.py` and :code:`setup.cfg` according to sementic versionning thanks to the conventional commit that we use in the lib. 
+It should modify for you the version number in :code:`qutree/__init__.py` and :code:`pyproject.toml` according to sementic versionning thanks to the conventional commit that we use in the lib. 
 
 It will also update the :code:`CHANGELOG.md` file with the latest commits, sorted by categories.
 
-Then you can now create a new tag with your new version number. use the same convention as the one found in :code:`setup.cfg`: :code:`v$minor.$major.$patch$prerelease`. 
+You can now create a new tag with your new version number. use the same convention as the one found in :code:`pyproject.toml`: :code:`v$minor.$major.$patch$prerelease`. 
     
-The CI should take everything in control from here and execute the :code:`Upload Python Package` GitHub Action that is publishing the new version on `PyPi <#>`_.
+The CI should take everything in control from here and execute the :code:`Upload Python Package` GitHub Action that is publishing the new version on `PyPi <https://pypi.org/project/qutree>`_.

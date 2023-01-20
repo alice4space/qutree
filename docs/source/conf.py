@@ -1,5 +1,4 @@
-"""
-Configuration file for the Sphinx documentation builder.
+"""Configuration file for the Sphinx documentation builder.
 
 This file only contains a selection of the most common options. For a full
 list see the documentation:
@@ -42,15 +41,28 @@ exclude_patterns = ["**.ipynb_checkpoints"]  # when working in a Jupyter env.
 html_theme = "pydata_sphinx_theme"
 html_static_path = ["_static"]
 html_css_files = ["custom.css"]
+html_context = {
+    "default_mode": "light",
+    "github_user": "alice4space",
+    "github_repo": "qutree",
+    "github_version": "main",
+    "doc_path": "docs/source",
+}
 
 # -- Options for autosummary/autodoc output ------------------------------------
 autosummary_generate = True
-autoclass_content = "class"
+autoclass_content = "init"
+autodoc_typehints = "description"
+
+# -- Option for Napoleon styling of tuple output -------------------------------
+napoleon_custom_sections = [("Returns", "params_style")]
 
 # -- Options of the HTML theme -------------------------------------------------
 html_theme_options = {
+    "logo": {"text": project},
     "use_edit_page_button": True,
     "show_prev_next": True,
+    "navbar_end": ["navbar-icon-links"],  # remove theme change
     "icon_links": [
         {
             "name": "GitHub",
@@ -63,10 +75,4 @@ html_theme_options = {
             "icon": "fa-brands fa-python",
         },
     ],
-}
-html_context = {
-    "github_user": "alice4space",
-    "github_repo": "qutree",
-    "github_version": "main",
-    "doc_path": "docs/source",
 }

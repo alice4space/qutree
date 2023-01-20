@@ -1,8 +1,11 @@
-__version__ = "0.0.0"  # noqa
-__author__ = "Alice Barthe"  # noqa
-__email__ = "alice.barthe@cern.ch"  # noqa
+"""Plot sets of multiqubit quantum pure states as a binary tree of Bloch spheres."""
 
-from typing import Tuple, Union
+__version__ = "0.0.0"
+__author__ = "Alice Barthe"
+__email__ = "alice.barthe@cern.ch"
+
+from pathlib import Path
+from typing import Optional, Tuple, Union
 
 import matplotlib as mpl
 import matplotlib.pyplot as plt
@@ -11,39 +14,35 @@ import qutip
 from matplotlib import cm
 
 
-def nphi_psi(psi: np.array) -> Tuple[np.array, np.array]:
-    """
-    decompose an array of complex into absolute value and angles
+def nphi_psi(psi: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
+    r"""Decompose an array of complex into absolute value and angles.
 
     Args:
-        psi (np.array): array of complex values
+        psi: array of complex values
 
     Returns:
-        r (np.array) : array of absolute values
-        phi (np.array) : array of angles from :math:`[0, 2\pi]`
+        r: array of absolute values
+        phi: array of angles from :math:`[0, 2\pi]`
     """
-
     r = np.abs(psi)
     phi = np.angle(psi) % (2 * np.pi)
 
     return r, phi
 
 
-def nthe_n0n1(n0: np.array, n1: np.array) -> Tuple[np.array, np.array]:
-    """
-    Carthesian to Polar
+def nthe_n0n1(n0: np.ndarray, n1: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
+    r"""Carthesian to Polar.
 
-    Compute :math:`n` and :math:`\theta` such that :math:`[n0,n1] = n[cos(\\theta),sin(\\theta)]`
+    Compute :math:`n` and :math:`\theta` such that :math:`[n0,n1] = n[cos(\theta),sin(\theta)]`
 
     Args:
-        n0 (np.array): array of absolute values
-        n1 (np.array): array of absolute values
+        n0: array of absolute values
+        n1: array of absolute values
 
     Returns:
-        n (np.array) : array of norm
-        the (np.array) : array of angles from :math:`[0, \pi]`
+        n: array of norm
+        the: array of angles from :math:`[0, \pi]`
     """
-
     n = np.sqrt(n0**2 + n1**2)
     the = 2 * np.arctan2(n1, n0)
 
@@ -51,36 +50,35 @@ def nthe_n0n1(n0: np.array, n1: np.array) -> Tuple[np.array, np.array]:
 
 
 def phimp_phi01(phi0, phi1):
-    """
-    go from two subspace phases to local and global phase
+    """Go from two subspace phases to local and global phase.
 
     Args:
-        phi0 (np.array): array of subspace 0 phases
-        phi1 (np.array): array of subspace 1 phases
+        phi0: array of subspace 0 phases
+        phi1: array of subspace 1 phases
 
     Returns:
-        phig (np.array): array of global phases
-        phil (np.array): array of local phases
+        phig: array of global phases
+        phil: array of local phases
     """
     phig = phi0
     phil = phi1 - phi0 + (phi1 < phi0) * 2 * np.pi
     return phil, phig
 
 
-def thephi_to_xyz(the: np.array, phi: np.array) -> Tuple[np.array, np.array, np.array]:
-    """
-    spherical to carthesian
+def thephi_to_xyz(
+    the: np.ndarray, phi: np.ndarray
+) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+    r"""Spherical to carthesian.
 
     Args:
-        the (np.array): array of the angles :math:`[0,\pi]`
-        phi (np.array): array of :math:`\phi` angles :math:`[0,2 \pi]`
+        the: array of the angles :math:`[0,\pi]`
+        phi: array of :math:`\phi` angles :math:`[0,2 \pi]`
 
     Returns:
-        x (np.array): array of the x axis coordinate
-        y (np.array): array of the y axis coordinate
-        z (np.array): array of the z axis coordinate
+        x: array of the x axis coordinate
+        y: array of the y axis coordinate
+        z: array of the z axis coordinate
     """
-
     z = np.cos(the)
     x = np.sin(the) * np.cos(phi)
     y = np.sin(the) * np.sin(phi)
@@ -89,29 +87,27 @@ def thephi_to_xyz(the: np.array, phi: np.array) -> Tuple[np.array, np.array, np.
 
 
 def fun_recursive(
-    psi: np.array,
+    psi: np.ndarray,
     coord: str = "",
     tree_vals: list = [],
     tree_idxs: list = [],
-    tol: float = 1e-4,
-) -> Tuple[np.array, np.array, list, list]:
-    """
-    recursive function going down the hilbert schmidt decomposition
+    tol: Optional[float] = 1e-4,
+) -> Tuple[np.ndarray, np.ndarray, list, list]:
+    r"""Recursive function going down the hilbert schmidt decomposition.
 
     Args:
-        psi (np.array): array representing the state in the current subspace :math:`(2^N,M)`
-        coord (str): string representing the current coordinate in the binary tree
-        tree_vals (list) : register storing the :math:`\\theta` and :math:`\phi` of the Bloch sphere at each coordinate
-        tree_idxs (list) : register storing the coordinates
-        tol : tolerance to delete a subspace
+        psi: array representing the state in the current subspace :math:`(2^N,M)`
+        coord: string representing the current coordinate in the binary tree
+        tree_vals: register storing the :math:`\theta` and :math:`\phi` of the Bloch sphere at each coordinate
+        tree_idxs: register storing the coordinates
+        tol: tolerance to delete a subspace.
 
     Returns:
-        phip (np.array) : the global phases of the local subspace
-        n (np.array) : the amplitude of the local subspace
-        tree_vals (list) : register storing the :math:`\\theta` and :math:`\phi` of the Bloch sphere at each coordinate
-        tree_idxs (list) : register storing the coordinates
+        phip: the global phases of the local subspace
+        n: the amplitude of the local subspace
+        tree_vals: register storing the :math:`\theta` and :math:`\phi` of the Bloch sphere at each coordinate
+        tree_idxs: register storing the coordinates
     """
-
     N = psi.shape[0]
 
     if N == 2:
@@ -160,27 +156,25 @@ def fun_recursive(
 
 
 def bloch_points(
-    xp: np.array,
-    yp: np.array,
-    zp: np.array,
+    xp: np.ndarray,
+    yp: np.ndarray,
+    zp: np.ndarray,
     colors,
-    ax: Union[mpl.axes.Axes, None] = None,
+    ax: Optional[mpl.axes.Axes] = None,
     azim: float = -40.0,
     elev: float = 30.0,
 ) -> None:
-    """
-    plot points on a bloch spere
+    """Plot points on a bloch spere.
 
     Args:
-        xp (np.array) : array of the x axis coordinate
-        yp (np.array) : array of the y axis coordinate
-        zp (np.array) : array of the z axis coordinate
-        colors (np.array) : array of colors for each point
-        ax (matplotlib.axes.Axes) : ax where the Bloch Sphere will be plotted, if None one is created
-        azim (float) : azimuth to plot the sphere
-        elev (float) : azimuth to plot the sphere
+        xp: array of the x axis coordinate
+        yp: array of the y axis coordinate
+        zp: array of the z axis coordinate
+        colors: array of colors for each point
+        ax: ax where the Bloch Sphere will be plotted, if None one is created
+        azim: azimuth to plot the sphere
+        elev: azimuth to plot the sphere
     """
-
     if ax is None:
         fig = plt.figure(constrained_layout=True)
         ax = fig.add_subplot(1, 1, 1, projection="3d", azim=azim, elev=elev)
@@ -194,28 +188,24 @@ def bloch_points(
 
 
 class BBT:
-    """
-    Class containing the data to plot the Bloch Binary Tree
-
-    Args:
-        num_qubits (int) : number of qubits
-    """
-
     def __init__(self, num_qubits: int) -> None:
+        """Class containing the data to plot the Bloch Binary Tree.
+
+        Args:
+            num_qubits: number of qubits
+        """
         self.num_qubits = num_qubits
 
     def add_data(
-        self, states: np.array, colors: Union[np.array, None] = None, cmap: str = "jet"
+        self, states: np.ndarray, colors: Optional[np.ndarray] = None, cmap: str = "jet"
     ) -> None:
-        """
-        Add data of states to the tree computing the Bloch spheres parameters
+        """Add data of states to the tree computing the Bloch spheres parameters.
 
         Args:
-            states (np.array) : complex array of M samples
-            colors (np.array,None) : complex array of either Mx4 for already generated colors, M for values between 0 and 1 that will follow the colormap, by default it will be the indexes.
-            cmap (str) : string name of a matplotlib colormap (default : 'jet')
+            states: complex array of M samples
+            colors: complex array of either Mx4 for already generated colors, M for values between 0 and 1 that will follow the colormap, by default it will be the indexes.
+            cmap: string name of a matplotlib colormap (default : 'jet')
         """
-
         assert (
             states.shape[0] == 2**self.num_qubits
         ), "The data doesnt fit the expected number of qubits"
@@ -223,8 +213,8 @@ class BBT:
 
         self.num_samples = states.shape[1]
 
-        tree_vals = []
-        tree_idxs = []
+        tree_vals: list = []
+        tree_idxs: list = []
 
         fun_recursive(states, tree_vals=tree_vals, tree_idxs=tree_idxs, tol=None)
 
@@ -262,18 +252,16 @@ class BBT:
         azim: float = -40.0,
         elev: float = 30.0,
         size_sphere: float = 2.0,
-        dst_file: str = "",
+        dst_file: Union[Path, str] = "",
     ) -> None:
-        """
-        Display the binary tree
+        """Display the binary tree.
 
         Args:
-            azim (float) : viewing angle : azimuth (default:-40)
-            elev (float) : viewing angle : elevation (default:30)
-            size_sphere (float) : size of each single sphere.
-            dst_file (str) : name of the destination file, leave blank for no file
+            azim: viewing angle -> azimuth (default:-40)
+            elev: viewing angle -> elevation (default:30)
+            size_sphere: size of each single sphere.
+            dst_file: name of the destination file, leave blank to not save the plot.
         """
-
         dw = 1 / (2 ** (self.num_qubits - 1))
         dh = 1 / self.num_qubits
         fig = plt.figure(figsize=(size_sphere / dw, size_sphere / dh))
@@ -300,5 +288,4 @@ class BBT:
 
             if dst_file != "":
                 fig.savefig(dst_file, transparent=True)
-                # fig.savefig(dst_file)
                 print(f"file successfully saved to {dst_file}")
