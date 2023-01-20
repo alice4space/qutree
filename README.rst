@@ -37,6 +37,14 @@ qutree
     :target: https://github.com/alice4space/qutree/blob/main/AUTHORS.rst
     :alt: All contributors
 
+.. image:: https://img.shields.io/badge/-open%20in%20colab-blue?logo=googlecolab&labelColor=555&logoColor=white
+    :target: https://colab.research.google.com/github/alice4space/qutree/blob/main/docs/source/examples/demo.ipynb
+    :alt: colab
+
+.. image:: https://img.shields.io/badge/-open%20in%20mybinder-blue?logo=jupyter&labelColor=555&logoColor=white
+    :target: https://colab.research.google.com/github/alice4space/qutree/blob/main/docs/source/examples/demo.ipynb
+    :alt: binder
+
 
 Overview
 --------
