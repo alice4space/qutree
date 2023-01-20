@@ -26,15 +26,16 @@ qutree
     :alt: Test Coverage
 
 .. image:: https://img.shields.io/codeclimate/maintainability/alice4space/qutree?logo=codeclimate&logoColor=white
-    :alt: Code Climate maintainability
+    :target: https://codeclimate.com/github/alice4space/qutree/maintainability
+    :alt: maintainability
 
 .. image:: https://img.shields.io/readthedocs/pyqutree/latest?logo=readthedocs&logoColor=white
     :target: https://pyqutree.readthedocs.io/en/latest/
     :alt: Documentation Status
 
-.. image:: https://img.shields.io/badge/all_contributors-2-purple
-    :alt: All contributors
+.. image:: https://img.shields.io/badge/all_contributors-2-blue
     :target: https://github.com/alice4space/qutree/blob/main/AUTHORS.rst
+    :alt: All contributors
 
 
 Overview
