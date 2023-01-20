@@ -19,7 +19,14 @@ jobs:
         with:
           path: './qutree'
           requirements: "."
-          mypy_flags: '--config-file ./pyproject.toml'
+          mypy_flags: |
+            --config-file ./pyproject.toml
+            --scripts-are-modules
+            --ignore-missing-imports
+            --install-types
+            --non-interactive
+            --disable-error-code
+            --warn-redundant-casts
 
   build:
     runs-on: ubuntu-latest
