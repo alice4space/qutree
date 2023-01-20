@@ -5,14 +5,13 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "qutree"
 version = "0.0.0"
-#licence-file = "LICENSE"
 description = "plot Bloch Sphere Binary Tree"
 keywords = ["QTI", "Python"]
 classifiers = [
-    "Development Status :: 1 - Planning", 
+    "Development Status :: 5 - Production/Stable", 
     "Intended Audience :: Developers",
     "Topic :: QTI", 
-    "License :: OSI Approved :: MIT", 
+    "License :: OSI Approved :: MIT License", 
     "Programming Language :: Python :: 3.7", 
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
@@ -69,6 +68,7 @@ doc = [
 [tool.setuptools]
 include-package-data = true
 packages = ["qutree"]
+license-files = ["LICENSE"]
 
 [tool.commitizen]
 changelog_file = "CHANGELOG.md"
