@@ -70,7 +70,7 @@ doc = [
 include-package-data = true
 packages = ["qutree"]
 
-[commitizen]
+[tool.commitizen]
 changelog_file = "CHANGELOG.md"
 tag_format = "$major.$minor.$patch$prerelease"
 update_changelog_on_bump = true
