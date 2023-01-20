@@ -64,6 +64,10 @@ doc = [
     "ipython",
     "pennylane",
 ]
+demo = [
+    "ipython",
+    "pennylane",
+]
 
 [tool.setuptools]
 include-package-data = true
