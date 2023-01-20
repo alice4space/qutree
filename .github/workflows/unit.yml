@@ -25,7 +25,7 @@ jobs:
             --ignore-missing-imports
             --install-types
             --non-interactive
-            --disable-error-code
+            --disable-error-code func-returns-value
             --warn-redundant-casts
 
   build:
