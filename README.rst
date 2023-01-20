@@ -42,7 +42,7 @@ qutree
     :alt: colab
 
 .. image:: https://img.shields.io/badge/-open%20in%20mybinder-blue?logo=jupyter&labelColor=555&logoColor=white
-    :target: https://colab.research.google.com/github/alice4space/qutree/blob/main/docs/source/examples/demo.ipynb
+    :target: https://mybinder.org/v2/gh/alice4space/qutree/main?labpath=docs%2Fsource%2Fexamples%2Fdemo.ipynb
     :alt: binder
 
 
