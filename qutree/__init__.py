@@ -281,6 +281,7 @@ class BBT:
                 else:
                     w = (1 + 2 * nbit) / 2 ** (len(d) + 1) - dw / 2
             ax = fig.add_axes([w, h, dw, dh], projection="3d", azim=azim, elev=elev)
+            ax.set_facecolor((0, 0, 0, 0))  # remove background
             the = self.tree_vals[i][0, :]
             phi = self.tree_vals[i][1, :]
             x, y, z = thephi_to_xyz(the, phi)
