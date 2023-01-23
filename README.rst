@@ -69,7 +69,7 @@ install with pip:
 
 And you will be able to produce this type of Bloch sphere's tree: 
 
-.. image::  https://raw.githubusercontent.com/12rambau/qutree/pre-release/docs/source/_static/example.png
+.. image::  https://raw.githubusercontent.com/alice4space/qutree/main/docs/source/_static/example.png
     :alt: example tree
 
 More information can be found in our `documentation <https://pyqutree.readthedocs.io/en/latest/>`__. 
