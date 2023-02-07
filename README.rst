@@ -14,7 +14,7 @@ qutree
     :alt: Black badge
 
 .. image:: https://img.shields.io/pypi/v/qutree?color=orange&logo=python&logoColor=white
-    :target: https://pypi.org/project/qutree 
+    :target: https://pypi.org/project/qutree
     :alt: PyPI
 
 .. image:: https://img.shields.io/github/actions/workflow/status/alice4space/qutree/unit.yml?logo=github&logoColor=white
@@ -67,12 +67,23 @@ install with pip:
 
     pip install qutree
 
-And you will be able to produce this type of Bloch sphere's tree: 
+And you will be able to produce this type of Bloch sphere's tree:
 
 .. image::  https://raw.githubusercontent.com/alice4space/qutree/main/docs/source/_static/example.png
     :alt: example tree
 
-More information can be found in our `documentation <https://pyqutree.readthedocs.io/en/latest/>`__. 
+More information can be found in our `documentation <https://pyqutree.readthedocs.io/en/latest/>`__.
+
+Citing
+------
+
+If you find qutree useful in your research, please consider citing the following papers to support our work. Thank you for your support.
+
+-   Barthe, A., Grossi, M., Tura, J., and Dunjko, V.. (2023). Bloch Sphere Binary Trees: A method for the visualization of sets of multi-qubit systems pure states.
+    https://doi.org/10.48550/arXiv.2302.02957
+
+Contribute
+----------
 
 If you want to contribute you can fork the project in your own repository and then use it. If you consider working with us, please follow the `contributing guidelines <https://pyqutree.readthedocs.io/en/latest/contribute.html>`__.
 
