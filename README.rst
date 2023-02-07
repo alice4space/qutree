@@ -82,7 +82,7 @@ If you find qutree useful in your research, please consider citing the following
 -   Barthe, A., Grossi, M., Tura, J., and Dunjko, V.. (2023). Bloch Sphere Binary Trees: A method for the visualization of sets of multi-qubit systems pure states.
     https://doi.org/10.48550/arXiv.2302.02957
 
-contribute
+Contribute
 ----------
 
 If you want to contribute you can fork the project in your own repository and then use it. If you consider working with us, please follow the `contributing guidelines <https://pyqutree.readthedocs.io/en/latest/contribute.html>`__.
