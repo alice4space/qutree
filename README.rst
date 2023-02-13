@@ -16,6 +16,10 @@ qutree
 .. image:: https://img.shields.io/pypi/v/qutree?color=orange&logo=python&logoColor=white
     :target: https://pypi.org/project/qutree
     :alt: PyPI
+    
+.. image:: https://img.shields.io/pypi/dm/qutree?logo=python&logoColor=white
+   :target: https://pypi.org/project/qutree
+   :alt: PyPI - Downloads
 
 .. image:: https://img.shields.io/github/actions/workflow/status/alice4space/qutree/unit.yml?logo=github&logoColor=white
     :target: https://github.com/alice4space/qutree/actions/workflows/unit.yml
