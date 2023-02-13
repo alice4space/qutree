@@ -1,6 +1,10 @@
 qutree
 ======
 
+.. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.7634517.svg
+   :target: https://doi.org/10.5281/zenodo.7634517
+   :alt: zenodo
+
 .. image:: https://img.shields.io/badge/License-MIT-yellow
     :target: https://github.com/alice4space/qutree/blob/main/LICENSE
     :alt: License: MIT
@@ -85,6 +89,8 @@ If you find qutree useful in your research, please consider citing the following
 
 -   Barthe, A., Grossi, M., Tura, J., and Dunjko, V.. (2023). Bloch Sphere Binary Trees: A method for the visualization of sets of multi-qubit systems pure states.
     https://doi.org/10.48550/arXiv.2302.02957
+    
+-   Rambaud, P., Barthe, A.. (2023). qutree. Zenodo. https://doi.org/10.5281/zenodo.7634518
 
 Contribute
 ----------
