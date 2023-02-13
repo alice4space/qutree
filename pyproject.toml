@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "qutree"
-version = "0.1.0"
+version = "0.1.1"
 description = "plot Bloch Sphere Binary Tree"
 keywords = ["QTI", "Python"]
 classifiers = [
@@ -78,7 +78,7 @@ license-files = ["LICENSE"]
 changelog_file = "CHANGELOG.md"
 tag_format = "v$major.$minor.$patch$prerelease"
 update_changelog_on_bump = true
-version = "0.1.0"
+version = "0.1.1"
 version_files = ["pyproject.toml:version", "qutree/__init__.py:__version__"]
 
 [tool.pytest.ini_options]

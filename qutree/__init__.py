@@ -1,6 +1,6 @@
 """Plot sets of multiqubit quantum pure states as a binary tree of Bloch spheres."""
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 __author__ = "Alice Barthe"
 __email__ = "alice.barthe@cern.ch"
 

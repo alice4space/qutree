@@ -1,3 +1,15 @@
+## v0.1.1 (2023-02-13)
+
+### Fix
+
+- refactor release env
+- make bloch sphere background transparent
+
+### Refactor
+
+- replace link from 12rambau branch
+- move the badges to the top of the file
+
 ## v0.1.0 (2023-01-20)
 
 ### Fix
