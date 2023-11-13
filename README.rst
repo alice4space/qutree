@@ -20,7 +20,7 @@ qutree
 .. image:: https://img.shields.io/pypi/v/qutree?color=orange&logo=python&logoColor=white
     :target: https://pypi.org/project/qutree
     :alt: PyPI
-    
+
 .. image:: https://img.shields.io/pypi/dm/qutree?logo=python&logoColor=white
    :target: https://pypi.org/project/qutree
    :alt: PyPI - Downloads
@@ -89,7 +89,7 @@ If you find qutree useful in your research, please consider citing the following
 
 -   Barthe, A., Grossi, M., Tura, J., and Dunjko, V.. (2023). Bloch Sphere Binary Trees: A method for the visualization of sets of multi-qubit systems pure states.
     https://doi.org/10.48550/arXiv.2302.02957
-    
+
 -   Rambaud, P., Barthe, A.. (2023). qutree. Zenodo. https://doi.org/10.5281/zenodo.7634518
 
 Contribute

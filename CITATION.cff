@@ -11,24 +11,24 @@ authors:
   - given-names: Alice
     family-names: Barthe
     email: alice.barthe@cern.ch
-    affiliation: 'CERN, Leiden University'
-    orcid: 'https://orcid.org/0000-0002-1766-188X'
+    affiliation: "CERN, Leiden University"
+    orcid: "https://orcid.org/0000-0002-1766-188X"
   - given-names: Pierrick
     family-names: Rambaud
     email: pierrick.rambaud@fao.org
     affiliation: FAO
-    orcid: 'https://orcid.org/0000-0001-8764-5749'
+    orcid: "https://orcid.org/0000-0001-8764-5749"
 identifiers:
   - type: doi
     value: 10.5281/zenodo.7634517
-repository-code: 'https://github.com/alice4space/qutree'
-url: 'https://pyqutree.readthedocs.io/en/stable/'
+repository-code: "https://github.com/alice4space/qutree"
+url: "https://pyqutree.readthedocs.io/en/stable/"
 abstract: >-
   This work presents an extension to the Bloch Sphere that
   allows to represent sets of multi-qubit pure states. The
   code includes the recursive algorithm to derive such
   representation from state vector coordinates, as well as
-  assciated plotting capacities.
+  associated plotting capacities.
 keywords:
   - quantum
   - qubit

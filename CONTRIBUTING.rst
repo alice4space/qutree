@@ -1,83 +1,108 @@
 Contribute
 ==========
 
-After forking the projet, run the following command to start developing: 
+Thank you for your help improving **qutree**!
+
+**qutree** uses `nox <https://nox.thea.codes/en/stable/>`__ to automate several development-related tasks.
+Currently, the project uses four automation processes (called sessions) in ``noxfile.py``:
+
+-   ``mypy``: to perform a mypy check on the lib;
+-   ``test``: to run the test with pytest;
+-   ``docs``: to build the documentation in the ``build`` folder;
+-   ``lint``: to run the pre-commits in an isolated environment
+
+Every nox session is run in its own virtual environment, and the dependencies are installed automatically.
+
+To run a specific nox automation process, use the following command:
 
 .. code-block:: console
 
-    git clone https://github.com/alice4space/qutree.git
-    cd qutree
-    pip install -e .[dev]
+   nox -s <session name>
 
-Nox 
----
+For example: ``nox -s test`` or ``nox -s docs``.
 
-:code:`nox` can be used to automatically create isolated local development environments with all of the correct packages installed to work on the lib. The rest of this guide focuses on using nox to start with a basic environment.
+Workflow for contributing changes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You can call :code:`nox` from the command line in order to perform common actions that are needed in building the lib. :code:`nox` operates with isolated environments, so each action has its own packages installed in a local directory (:code:`.nox`). For common development actions, you’ll simply need to use :code:`nox` and won’t need to set up any other packages.
-    
-Pre-commit hooks 
-----------------
+We follow a typical GitHub workflow of:
 
-:code:`pre-commit` allows us to run several checks on the codebase every time a new Git commit is made. This ensures standards and basic quality control for our code.
+-   Create a personal fork of this repo
+-   Create a branch
+-   Open a pull request
+-   Fix findings of various linters and checks
+-   Work through code review
 
-Install the pre-commit in the repository:
+See the following sections for more details.
 
-.. code-block:: console
+Clone the repository
+^^^^^^^^^^^^^^^^^^^^
 
-    pre-commit install -t pre-commit -t commit-msg
+First off, you'll need your own copy of **qutree** codebase. You can clone it for local development like so:
 
-Linting operations will be run automatically for every downstream commit.
+Fork the repository so you have your own copy on GitHub. See the `GitHub forking guide for more information <https://docs.github.com/en/get-started/quickstart/fork-a-repo>`__.
 
-.. note:: 
-
-    to run liniting operation without commiting your change execute the following: 
-
-    .. code-block:: console
-
-        nox -s lint
-
-Mypy
-----
-
-Mypy is a static type checker for Python.
-
-Type checkers help ensure that you're using variables and functions in your code correctly. With mypy, add type hints (PEP 484) to your Python programs, and mypy will warn you when you use those types incorrectly.
-
-Python is a dynamic language, so usually you'll only see errors in your code when you attempt to run it. Mypy is a static checker, so it finds bugs in your programs without even running them!
-
-to run the MyPy checks run: 
+Then, clone the repository locally so that you have a local copy to work on:
 
 .. code-block:: console
 
-    nox -s mypy
+   git clone https://github.com/<YOUR USERNAME>/qutree
+   cd qutree
 
-Documentation
--------------
+Then install the development version of the extension:
 
-We build our documentation within the :code:`Sphinx` framework. execute the associated nox to build the file and produce the associated HTML:
+.. code-block:: console
+
+   pip install -e .[dev]
+
+This will install the **qutree** library, together with two additional tools:
+-   `pre-commit <https://pre-commit.com>`__ for automatically enforcing code standards and quality checks before commits.
+-   `nox <https://nox.thea.codes/en/stable/>`__, for automating common development tasks.
+
+Lastly, activate the pre-commit hooks by running:
+
+.. code-block:: console
+
+    pre-commit install
+
+This will install the necessary dependencies to run pre-commit every time you make a commit with Git.
+
+Contribute to the codebase
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Any larger updates to the codebase should include tests and documentation. The tests are located in the ``tests`` folder, and the documentation is located in the ``docs`` folder.
+
+To run the tests locally, use the following command:
+
+.. code-block:: console
+
+    nox -s test
+
+See :ref:`below <contributing-docs>` for more information on how to update the documentation.
+
+.. _contributing-docs:
+
+Contribute to the docs
+^^^^^^^^^^^^^^^^^^^^^^
+
+The documentation is built using `Sphinx <https://www.sphinx-doc.org/en/master/>`__ and deployed to `Read the Docs <https://readthedocs.org/>`__.
+
+To build the documentation locally, use the following command:
 
 .. code-block:: console
 
     nox -s docs
 
-The index file will be in :code:`./docs/build/html/index.html`.
+For each pull request, the documentation is built and deployed to make it easier to review the changes in the PR. To access the docs build from a PR, click on the "Read the Docs" preview in the CI/CD jobs.
 
-Release
--------
+Release new version
+^^^^^^^^^^^^^^^^^^^
 
-You need to use the :code:`commitizen` lib to create your release: `<https://commitizen-tools.github.io/commitizen>`__.
-    
-In the files change the version number by runnning commitizen `bump`: 
+To release a new version, start by pushing a new bump from the local directory:
 
-.. code-block:: console
+.. code-block::
 
     cz bump
 
-It should modify for you the version number in :code:`qutree/__init__.py` and :code:`pyproject.toml` according to sementic versionning thanks to the conventional commit that we use in the lib. 
+The commitizen-tool will detect the semantic version name based on the existing commits messages.
 
-It will also update the :code:`CHANGELOG.md` file with the latest commits, sorted by categories.
-
-You can now create a new tag with your new version number. use the same convention as the one found in :code:`pyproject.toml`: :code:`v$minor.$major.$patch$prerelease`. 
-    
-The CI should take everything in control from here and execute the :code:`Upload Python Package` GitHub Action that is publishing the new version on `PyPi <https://pypi.org/project/qutree>`_.
+Then push to Github. In Github design a new release using the same tag name nad the ``release.yaml`` job will send it to pipy.

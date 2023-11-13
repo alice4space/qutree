@@ -6,8 +6,7 @@
 
    install
    Examples <examples/demo>
-   API <_api/modules>
    contribute
    authors
-   
-   
+
+

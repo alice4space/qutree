@@ -71,7 +71,7 @@ instance/
 
 # Sphinx documentation
 docs/_build/
-docs/source/_api/
+docs/api/
 
 # PyBuilder
 target/
@@ -130,5 +130,8 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# system IDE 
+# system IDE
 .vscode/
+
+# image tmp file
+*Zone.Identifier
