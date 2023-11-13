@@ -1,4 +1,4 @@
-Authors
-=======
+Author
+======
 
-.. include :: ../../AUTHORS.rst
+.. include :: ../AUTHORS.rst
