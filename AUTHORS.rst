@@ -10,14 +10,14 @@ Thanks goes to these wonderful people (`emoji key <https://allcontributors.org/d
                     <sub><b>Alice Barthe</b></sub>
                 </a>
                 <br/>
-                <a href="#code" title="Code">💻</a> 
-                <a href="#ideas" title="Ideas, Planning, & Feedback">🤔</a> 
-                <a href="#question" title="Answering Questions">💬</a> 
+                <a href="#code" title="Code">💻</a>
+                <a href="#ideas" title="Ideas, Planning, & Feedback">🤔</a>
+                <a href="#question" title="Answering Questions">💬</a>
                 <br/>
-                <a href="#issue" title="Bug reports">🐛</a> 
-                <a href="#maintenance" title="Maintenance">🚧</a> 
+                <a href="#issue" title="Bug reports">🐛</a>
+                <a href="#maintenance" title="Maintenance">🚧</a>
                 <a href="#review" title="Reviewed Pull Requests">👀</a>
-                <br/> 
+                <br/>
                 <a href="#example" title="Examples">💡</a>
             </td>
         </tr>
@@ -28,12 +28,12 @@ Thanks goes to these wonderful people (`emoji key <https://allcontributors.org/d
                     <sub><b>Pierrick Rambaud</b></sub>
                 </a>
                 <br/>
-                <a href="#code" title="Code">💻</a>  
-                <a href="#issue" title="Bug reports">🐛</a> 
-                <a href="#documentation" title="Documentation">📖</a> 
+                <a href="#code" title="Code">💻</a>
+                <a href="#issue" title="Bug reports">🐛</a>
+                <a href="#documentation" title="Documentation">📖</a>
                 <br/>
-                <a href="#maintenance" title="Maintenance">🚧</a> 
-                <a href="#review" title="Reviewed Pull Requests">👀</a> 
+                <a href="#maintenance" title="Maintenance">🚧</a>
+                <a href="#review" title="Reviewed Pull Requests">👀</a>
                 <a href="#test" title="Tests">⚠️</a>
                 </br>
                 <a href="#infra" title="Infrastructure">🚇</a>

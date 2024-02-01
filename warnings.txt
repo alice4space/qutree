@@ -1,0 +1,12 @@
+
+Traceback (most recent call last):
+  File "/mnt/e/WSL/Users/rambap/github/qutree/.nox/docs/lib/python3.9/site-packages/sphinx/cmd/build.py", line 293, in build_main
+    app = Sphinx(args.sourcedir, args.confdir, args.outputdir,
+  File "/mnt/e/WSL/Users/rambap/github/qutree/.nox/docs/lib/python3.9/site-packages/sphinx/application.py", line 211, in __init__
+    self.config = Config.read(self.confdir, confoverrides or {}, self.tags)
+  File "/mnt/e/WSL/Users/rambap/github/qutree/.nox/docs/lib/python3.9/site-packages/sphinx/config.py", line 179, in read
+    raise ConfigError(__("config directory doesn't contain a conf.py file (%s)") %
+sphinx.errors.ConfigError: config directory doesn't contain a conf.py file (/mnt/e/WSL/Users/rambap/github/qutree/docs)
+
+[91mConfiguration error:[39;49;00m
+config directory doesn't contain a conf.py file (/mnt/e/WSL/Users/rambap/github/qutree/docs)

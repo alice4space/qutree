@@ -31,7 +31,7 @@ def nphi_psi(psi: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
 
 
 def nthe_n0n1(n0: np.ndarray, n1: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
-    r"""Carthesian to Polar.
+    r"""Cartesian to Polar.
 
     Compute :math:`n` and :math:`\theta` such that :math:`[n0,n1] = n[cos(\theta),sin(\theta)]`
 
@@ -68,7 +68,7 @@ def phimp_phi01(phi0, phi1):
 def thephi_to_xyz(
     the: np.ndarray, phi: np.ndarray
 ) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
-    r"""Spherical to carthesian.
+    r"""Spherical to cartesian.
 
     Args:
         the: array of the angles :math:`[0,\pi]`
@@ -208,7 +208,7 @@ class BBT:
         """
         assert (
             states.shape[0] == 2**self.num_qubits
-        ), "The data doesnt fit the expected number of qubits"
+        ), "The data doesn't fit the expected number of qubits"
         assert len(states.shape) == 2, "the data must be a 2D tensor"
 
         self.num_samples = states.shape[1]
@@ -240,7 +240,7 @@ class BBT:
             ):  # case in which the color is a a 1D tensor, create colors matrix with cmap
                 assert (
                     colors.shape[0] == self.num_samples
-                ), "the colors must have the same legth as the number of samples"
+                ), "the colors must have the same length as the number of samples"
                 cm_custom = cm.get_cmap(cmap, 256)
                 self.samples_colors = cm_custom(colors)
         else:

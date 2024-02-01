@@ -1,27 +1,30 @@
 [build-system]
-requires = ["setuptools>=61.2", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [project]
 name = "qutree"
 version = "0.1.1"
 description = "plot Bloch Sphere Binary Tree"
-keywords = ["QTI", "Python"]
+keywords = [
+  "QTI",
+  "Python"
+]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "Topic :: Scientific/Engineering :: Physics",
     "License :: OSI Approved :: MIT License",
-    "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
 ]
-requires-python = ">=3.6.9"
+requires-python = ">=3.8"
 dependencies = [
-    "Deprecated",
-    "numpy",
-    "matplotlib",
-    "qutip"
+  "deprecated>=1.2.14",
+  "numpy",
+  "matplotlib",
+  "qutip",
 ]
 
 [[project.authors]]
@@ -36,64 +39,62 @@ file = "README.rst"
 content-type = "text/x-rst"
 
 [project.urls]
-Homepage = "https://github.com/alice4space/bbt"
-Download = "https://github.com/alice4space/bbt/archive/${metadata:version}.tar.gz"
+Homepage = "https://github.com/alice4space/qutree"
 
 [project.optional-dependencies]
-dev = [
-    "pre-commit",
-    "commitizen",
-    "nox",
-    "mypy",
-]
 test = [
-    "pytest",
-    "pytest-sugar",
-    "pytest-icdiff",
-    "pytest-cov",
-    "Flake8-pyproject",
+  "pytest",
+  "pytest-sugar",
+  "pytest-cov",
+  "pytest-deadfixtures"
 ]
 doc = [
-    "Sphinx<6",
-    "pydata-sphinx-theme",
-    "nox",
-    "ipykernel", # for readthedocs
-    "nbsphinx",
-    "sphinx-copybutton",
-    # to run the examples
-    "ipython",
-    "pennylane",
+  "sphinx>=6.2.1",
+  "pydata-sphinx-theme",
+  "sphinx-copybutton",
+  "sphinx-design",
+  "ipykernel",
+  "ipython",
+  "myst-nb",
+  "pennylane",
+
 ]
 demo = [
-    "ipython",
-    "pennylane",
+  "ipython",
+  "pennylane",
 ]
 
-[tool.setuptools]
-include-package-data = true
-packages = ["qutree"]
-license-files = ["LICENSE"]
+[tool.hatch.build.targets.wheel]
+only-include = ["qutree"]
+
+[tool.hatch.envs.default]
+dependencies = [
+  "pre-commit",
+  "commitizen",
+  "nox"
+]
+post-install-commands = ["pre-commit install"]
 
 [tool.commitizen]
-changelog_file = "CHANGELOG.md"
 tag_format = "v$major.$minor.$patch$prerelease"
-update_changelog_on_bump = true
+update_changelog_on_bump = false
 version = "0.1.1"
-version_files = ["pyproject.toml:version", "qutree/__init__.py:__version__"]
+version_files = [
+    "pyproject.toml:version",
+    "qutree/__init__.py:__version__",
+]
 
 [tool.pytest.ini_options]
 testpaths = "tests"
-
-[tool.coverage.run]
-source = ["qutree"]
 
 [tool.ruff]
 ignore-init-module-imports = true
 fix = true
 select = ["E", "F", "W", "I", "D", "RUF"]
 ignore = [
-    "E501",  # line too long | Black take care of it
-    "D101",  # Missing docstring in public class | set in the __init__ method only
+  "E501",  # line too long | Black take care of it
+  "D101",  # Missing docstring in public class | set in the __init__ method only
+  "D212",  # Multi-line docstring | We use D213
 ]
 
 [tool.ruff.flake8-quotes]
@@ -104,3 +105,19 @@ convention = "google"
 
 [tool.ruff.per-file-ignores]
 "tests/*.py" = ["D"] # no docstring for the tests
+
+[tool.coverage.run]
+source = ["qutree"]
+
+[tool.doc8]
+ignore = ["D001"] # we follow a 1 line = 1 paragraph style
+
+[tool.mypy]
+scripts_are_modules = true
+ignore_missing_imports = true
+install_types = true
+non_interactive = true
+warn_redundant_casts = true
+
+[tool.licensecheck]
+using = "PEP631"

@@ -1,50 +1,69 @@
-"""Define nox sessions for running tests and checks."""
+"""All the process that can be run using nox.
+
+The nox run are build in isolated environment that will be stored in .nox. to force the venv update, remove the .nox/xxx folder.
+"""
+import datetime
+import fileinput
 
 import nox
+
+nox.options.sessions = ["lint", "test", "docs", "mypy"]
 
 
 @nox.session(reuse_venv=True)
 def lint(session):
-    """Lint everything possible using the pre-commit environment."""
+    """Apply the pre-commits."""
     session.install("pre-commit")
-    session.run("pre-commit", "run", "--a", *session.posargs)
+    session.run("pre-commit", "run", "--all-files", *session.posargs)
 
 
-@nox.session(python=["3.7", "3.8", "3.9"])
+@nox.session(reuse_venv=True)
 def test(session):
-    """Run the lib test and export a coverage as html."""
+    """Run all the test using the environment variable of the running machine."""
     session.install(".[test]")
-    session.run("pytest", "--color=yes", "--cov", "--cov-report=html", "tests")
+    test_files = session.posargs or ["tests"]
+    session.run("pytest", "--color=yes", "--cov", "--cov-report=xml", *test_files)
+
+
+@nox.session(reuse_venv=True, name="dead-fixtures")
+def dead_fixtures(session):
+    """Check for dead fixtures within the tests."""
+    session.install(".[test]")
+    session.run("pytest", "--dead-fixtures")
 
 
 @nox.session(reuse_venv=True)
 def docs(session):
-    """Build the html docs."""
+    """Build the documentation."""
+    build = session.posargs.pop() if session.posargs else "html"
     session.install(".[doc]")
-    session.run(
-        "sphinx-apidoc",
-        "--force",
-        "--module-first",
-        "-o",
-        "docs/source/_api",
-        "./qutree",
-    )
-    session.run("sphinx-build", "-b", "html", "docs/source", "docs/build/html")
+    session.run("sphinx-build", "-v", "-b", build, "docs", f"docs/_build/{build}")
 
 
 @nox.session(name="mypy", reuse_venv=True)
 def mypy(session):
     """Run a mypy check of the lib."""
-    session.install(".[dev]")
+    session.install("mypy")
     test_files = session.posargs or ["qutree"]
-    session.run(
-        "mypy",
-        "--scripts-are-modules",
-        "--ignore-missing-imports",
-        "--install-types",
-        "--non-interactive",
-        "--disable-error-code",
-        "func-returns-value",
-        "--warn-redundant-casts",
-        *test_files,
-    )
+    session.run("mypy", *test_files)
+
+
+@nox.session(reuse_venv=True)
+def stubgen(session):
+    """Generate stub files for the lib but requires human attention before merge."""
+    session.install("mypy")
+    package = session.posargs or ["qutree"]
+    session.run("stubgen", "-p", package[0], "-o", "stubs", "--include-private")
+
+
+@nox.session(name="release-date", reuse_venv=True)
+def release_date(session):
+    """Update the release date of the citation file."""
+    current_date = datetime.datetime.now().strftime("%Y-%m-%d")
+
+    with fileinput.FileInput("CITATION.cff", inplace=True) as file:
+        for line in file:
+            if line.startswith("date-released:"):
+                print(f'date-released: "{current_date}"')
+            else:
+                print(line, end="")
