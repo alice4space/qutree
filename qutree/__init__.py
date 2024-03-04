@@ -65,9 +65,7 @@ def phimp_phi01(phi0, phi1):
     return phil, phig
 
 
-def thephi_to_xyz(
-    the: np.ndarray, phi: np.ndarray
-) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+def thephi_to_xyz(the: np.ndarray, phi: np.ndarray) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
     r"""Spherical to cartesian.
 
     Args:

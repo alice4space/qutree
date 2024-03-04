@@ -15,13 +15,11 @@ sys.path.insert(0, os.path.abspath("."))
 sys.path.insert(0, os.path.abspath("../.."))
 sys.path.insert(0, os.path.abspath("../../examples"))
 
-from qutree import __author__, __version__  # noqa
-
 # -- Project information -------------------------------------------------------
 project = "qutree"
-copyright = f"2022-{datetime.now().year}, {__author__}"
-author = __author__
-release = __version__
+author = "Alice Barthe"
+copyright = f"2024-{datetime.now().year}, {author}"
+release = "0.1.1"
 
 # -- General configuration -----------------------------------------------------
 extensions = [

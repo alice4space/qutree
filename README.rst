@@ -97,4 +97,4 @@ Contribute
 
 If you want to contribute you can fork the project in your own repository and then use it. If you consider working with us, please follow the `contributing guidelines <https://pyqutree.readthedocs.io/en/latest/contribute.html>`__.
 
-Meet our `contributor <https://pyqutree.readthedocs.io/en/latest/authors.html>`__.
+This package was created with `Copier <https://copier.readthedocs.io/en/latest/>`__ and the `@12rambau/pypackage <https://github.com/12rambau/pypackage>`__ 0.1.11 project template.
