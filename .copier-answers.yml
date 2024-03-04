@@ -1,10 +1,11 @@
 # Changes here will be overwritten by Copier
-_commit: 0.1.5
+_commit: 0.1.11
 _src_path: gh:12rambau/pypackage
 author_email: alice.barthe@cern.ch
 author_first_name: Alice
 author_last_name: Barthe
 author_orcid: 0000-0002-1766-188X
+creation_year: "2024"
 github_repo_name: qutree
 github_user: alice4space
 project_name: qutree
