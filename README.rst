@@ -25,8 +25,8 @@ qutree
    :target: https://pypi.org/project/qutree
    :alt: PyPI - Downloads
 
-.. image:: https://img.shields.io/github/actions/workflow/status/alice4space/qutree/unit.yml?logo=github&logoColor=white
-    :target: https://github.com/alice4space/qutree/actions/workflows/unit.yml
+.. image:: https://img.shields.io/github/actions/workflow/status/alice4space/qutree/unit.yaml?logo=github&logoColor=white
+    :target: https://github.com/alice4space/qutree/actions/workflows/unit.yaml
     :alt: build
 
 .. image:: https://img.shields.io/codecov/c/github/alice4space/qutree?logo=codecov&logoColor=white
@@ -77,7 +77,7 @@ install with pip:
 
 And you will be able to produce this type of Bloch sphere's tree:
 
-.. image::  https://raw.githubusercontent.com/alice4space/qutree/main/docs/source/_static/example.png
+.. image::  https://raw.githubusercontent.com/alice4space/qutree/main/docs/_static/example.png
     :alt: example tree
 
 More information can be found in our `documentation <https://pyqutree.readthedocs.io/en/latest/>`__.
